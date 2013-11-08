@@ -1,4 +1,5 @@
 package roadready;
+import java.util.Scanner;
 import java.util.Currency;
 import java.text.NumberFormat;
 import java.util.Locale; //
@@ -9,33 +10,34 @@ import java.util.Locale; //
 public class Vehicle {
     
     String vehicleID; //Set the lenght of string !!!!!!
-    state condition;
+    String condition;
     String make;
-    //Model; Int+String????
+    String Model; //String????
     String bodyType;
     String colour;
-    Fuel fuel; // Or list of String. 
+    String fuel; // Or list of String. 
     int manufactured;
-    Enum transmission;
+    String transmission;
     int millage;
     String engineSize;
     int doortNR;
     Locale locale = new Locale("en","UK");
-    NumberFormat price;
+    String price;
     String description;
     // Photo ????????????
     
-    public Vehicle (String ID, Enum condition, String make, String bodyType, String colour, 
-            Enum fuel, int manufactured, Enum transmission, int millage, 
+    public Vehicle (String ID, String condition, String make, String bodyType, String colour, 
+            String fuel, int manufactured, String transmission, int millage, 
             String engineSize, int doorNR, String price, String description){
        
-        if (validVehicleID(ID)){
+        if (Validation.validVehicleID(ID)){
             this.vehicleID = ID;
-        } else {
+        }else{
             System.out.println("Please enter correct ID code");
+            
         }
         
-        this.condition = condition;
+        setCondition(condition);
         this.make = make;
         this.bodyType = bodyType;
         this.colour = colour;
@@ -45,31 +47,54 @@ public class Vehicle {
         this.millage = millage;
         this.engineSize = engineSize;
         this.doortNR = doorNR;
-        this.price = NumberFormat.getCurrencyInstance(locale);
-        this.price.format(price);
+        //Locale local = new Locale("en","UK");
+        //NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+        //this.price = fmt.format(price);
+        this.price=price;
         this.description = description;
-        
     }
     
-    public enum state {
-        New,Used,
+    public static String scanner(){
+            Scanner in = new Scanner(System.in);
+            String newWord = in.next();
+            return newWord;
     }
     
-    public enum Fuel {
-        Petrol, Diesel, BiFuel, Eletric, Hybrid, Unlisted
+    public void setCondition(String state){
+        if(Validation.Condition(state)){
+           this.condition = state;
+        }else {
+            System.out.println("Please enter Used or New");
+            setCondition(scanner());
+        }
+    }
+    
+    public void setFuelType(String fuel) {
+        if(Validation.FuelType(fuel)){
+            this.fuel = fuel;
+        }else{
+            setFuelType(scanner());
+        }
+    }
+    
+    public void setbody(String type) {
+        if(Validation.body(type)){
+            this.bodyType = type;
+        }else{
+            setbody(scanner());
+        } 
+    }
+    
+    public void  setTrans (String gearBoxType){
+        if(Validation.transmission(gearBoxType)){
+            this.transmission = gearBoxType;
+        }else{
+            setTrans(scanner());
+        } 
     }
     
     
-    public Boolean validVehicleID(String currentID){
-       
-        if ( currentID.length() < 5){
-           return true;
-        } else {
-            return false;
-        }        
-        
-    }
-    
+    @Override
     public String toString () {
         return ("Vehicle ID: "+this.vehicleID+
                 "\n Condition: "+this.condition+
@@ -83,6 +108,6 @@ public class Vehicle {
                 "\n Engine Size: "+this.engineSize+
                 "\n No Of Door: "+this.doortNR+
                 "\n Price: "+this.price+
-                "\n Description"+this.description);
+                "\n Description: "+this.description);
     }
 }
