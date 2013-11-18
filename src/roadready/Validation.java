@@ -10,16 +10,10 @@ package roadready;
  */
 public class Validation {
     
-    public static Boolean validVehicleID(String currentID){
-       
-        if ( currentID.length() < 5){
-           return true;
-        } else {
-            return false;
-        }        
-    }    
-    
-    
+    public static Boolean validCode(String currentID){
+        return currentID.matches("[A-Z][A-Z][A-Z][A-Z][0-9][0-9][0-9]"); //Only English Character allowed
+    }
+ 
     public static Boolean Condition(String state) {
         String[] valid = {"New","Used"};
             for (String word:valid){        

@@ -30,12 +30,12 @@ public class Vehicle {
             String fuel, int manufactured, String transmission, int millage, 
             String engineSize, int doorNR, String price, String description){
        
-        if (Validation.validVehicleID(ID)){
-            this.vehicleID = ID;
-        }else{
-            System.out.println("Please enter correct ID code");
+        //if (Validation.validVehicleID(ID)){
+        //    this.vehicleID = ID;
+        //}else{
+        //    System.out.println("Please enter correct ID code");
             
-        }
+       // }
         
         setCondition(condition);
         this.make = make;
