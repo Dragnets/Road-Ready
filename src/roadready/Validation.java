@@ -11,7 +11,13 @@ package roadready;
 public class Validation {
     
     public static Boolean validCode(String currentID){
-        return currentID.matches("[A-Z][A-Z][A-Z][A-Z][0-9][0-9][0-9]"); //Only English Character allowed
+        Boolean status;
+        if (currentID.matches("[A-Z][A-Z][A-Z][A-Z][0-9][0-9][0-9]")){ //Only English Character allowed
+            status = true;
+        } else {
+            status = false;
+        }
+        return status;
     }
  
     public static Boolean Condition(String state) {
@@ -24,6 +30,17 @@ public class Validation {
             return false;
     }
     
+    public static Boolean body(String type){
+        String[] valid = {"Hatchback", "Saloon", "Estate", "Convertible", "MPV",
+            "Couple", "Quatro", "Unlisted"};
+        for (String word:valid){
+            if(word.equals(type)){
+                return true;
+                }
+            }
+        return false;
+    }
+        
     public static Boolean FuelType(String fuel) {
         String[] valid = {"Petrol", "Diesel", "BiFuel", "Eletric",
         "Hybrid", "Unlisted"};        
@@ -35,19 +52,8 @@ public class Validation {
         return false;
     }
     
-    public static Boolean body(String type){
-        String[] valid = {"Hatchback", "Saloon", "Estate", "Convertible", "MPV",
-            "Couple", "Quatro", "Unlisted"};
-        for (String word:valid){
-            if(word.equals(type)){
-                return true;
-                }
-            }
-        return false;
-    }
-    
     public static Boolean transmission (String gearBoxType){
-        String[] valid = {"Manua", "Automatic", "Semi auto", "Unlisted"};
+        String[] valid = {"Manual", "Automatic", "Semi auto", "Unlisted"};
         for (String word:valid){
             if(word.equals(gearBoxType)){
                 return true;
@@ -55,6 +61,4 @@ public class Validation {
         }
         return false;
     }
-    
 }
-
