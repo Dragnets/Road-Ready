@@ -1,0 +1,7 @@
+VehicleID,Condition,Make,Model,Body Type,Colour,Fuel,Manufactured,Transmission,Millage,Engine Size,Door Nr,Price,Description
+ABCD589,New,AUDI,A4,Saloon,Silver,Petrol,2007,Manual,80000,1968 CC,5,8.995,Good runner
+ABDG894,New,BMW,535,Coupe,Black,Diesel,2005,Automatic,89500,2993 CC,3,6.505,Lovely car
+GOLD895,Used,AUDI,A6,Saloon,Grey,Diesel,2008,Automatic,75600,1781 CC,5,8.205,New Cam bell
+DIGG562,New,BMW,520,Saloon,Black,Diesel,2010,Manual,30598,1995 CC,5,13.505,Smoke free 
+PETT189,Used,AUDI,S4,Saloon,Blue,Petrol,2004,Manual,91020,4163 CC,5,4.895,Sport car
+DIGL489,New,AUDI,A4,Saloon,Green,Diesel,2006,Automatic,69580,1968 CC,5,7.356,Drives well
