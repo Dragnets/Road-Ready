@@ -7,14 +7,14 @@ import java.util.Locale; //
 
 /**
  *
- * @author kupcer
+ * @author Raitis Kupce
  */
 public class Vehicle {
 
     String vehicleID; //Set the lenght of string !!!!!!
     String condition;
     String make;
-    String Model; //String????
+    String model; //String????
     String bodyType;
     String colour;
     String fuel; // Or list of String. 
@@ -22,13 +22,13 @@ public class Vehicle {
     String transmission;
     int millage;
     String engineSize;
-    int doortNR;
+    int doorNR;
     Locale locale = new Locale("en", "UK");
     String price;
     String description;
     // Photo ????????????
 
-    public Vehicle(String ID, String condition, String make, String bodyType,
+    public Vehicle(String ID, String condition, String make, String model, String bodyType,
             String colour, String fuel, int manufactured, String transmission,
             int millage,String engineSize, int doorNR, String price,
             String description) throws ProductException {
@@ -49,10 +49,10 @@ public class Vehicle {
         if(!Validation.transmission(transmission)){
             throw new ProductException("Invalid transmision");
         }
-        
         this.vehicleID = ID;
         this.condition = condition;
         this.make = make;
+        this.model=model;
         this.bodyType = bodyType;
         this.colour = colour;
         this.fuel = fuel;
@@ -60,7 +60,7 @@ public class Vehicle {
         this.transmission = transmission;
         this.millage = millage;
         this.engineSize = engineSize;
-        this.doortNR = doorNR;
+        this.doorNR = doorNR;
         //Locale local = new Locale("en","UK");
         //NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
         //this.price = fmt.format(price);
@@ -78,14 +78,15 @@ public class Vehicle {
         return ("Vehicle ID: " + this.vehicleID
                 + "\n Condition: " + this.condition
                 + "\n Make: " + this.make
-                + "\n Body Type: " + this.make
+                + "\n Model: " + this.model
+                + "\n Body Type: " + this.bodyType
                 + "\n Colour: " + this.colour
                 + "\n Fuel: " + this.fuel
-                + "\n Manufactured" + this.manufactured
-                + "\n Transmission" + this.transmission
+                + "\n Manufactured: " + this.manufactured
+                + "\n Transmission: " + this.transmission
                 + "\n Millage: " + this.millage
                 + "\n Engine Size: " + this.engineSize
-                + "\n No Of Door: " + this.doortNR
+                + "\n No Of Door: " + this.doorNR
                 + "\n Price: " + this.price
                 + "\n Description: " + this.description);
     }

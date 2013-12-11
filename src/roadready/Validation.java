@@ -6,7 +6,7 @@ package roadready;
 
 /**
  *
- * @author kupcer
+ * @author Raitis Kupce
  */
 public class Validation {
     
