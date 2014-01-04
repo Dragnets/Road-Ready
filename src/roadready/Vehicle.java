@@ -3,8 +3,12 @@ package roadready;
 import java.util.Scanner;
 import java.util.Currency;
 import java.text.NumberFormat;
-import java.util.Locale; //
-
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale; // Find out wehther needed
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 /**
  *
  * @author Raitis Kupce
@@ -26,6 +30,9 @@ public class Vehicle {
     Locale locale = new Locale("en", "UK");
     String price;
     String description;
+    Calendar calendar;
+    String dateInMarket;
+    String soldDate = "In stock";
     // Photo ????????????
 
     public Vehicle(String ID, String condition, String make, String model, String bodyType,
@@ -66,13 +73,45 @@ public class Vehicle {
         //this.price = fmt.format(price);
         this.price = price;
         this.description = description;
+        dateVehicleInStock();
     }
     
     public String getVehicleID(){
         return this.vehicleID;
     }
     
- 
+    // Set up current date
+    public String gregorianCalendar(){
+        calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT+0"));
+        Date now = new Date();
+        calendar.setTime(now);
+
+        int day   = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year  = calendar.get(Calendar.YEAR);
+        String monthName = new SimpleDateFormat("MMM").format(month);
+        
+        String currentDate = "" +day+" "+monthName+" "+year;
+        return currentDate;
+    }
+    
+    // date when introduced
+    public void dateVehicleInStock(){
+        dateInMarket = gregorianCalendar();
+    }
+    //get date in market
+    public String getVehicleDateInStock(){
+        return dateInMarket;
+    }
+    
+    //set up date when sold
+    public void vehicleSold(){
+        soldDate = gregorianCalendar();
+    }
+    public String getVehicleSoldDate(){
+        return soldDate;
+    }
+    
     @Override
     public String toString() {
         return ("Vehicle ID: " + this.vehicleID
@@ -88,7 +127,9 @@ public class Vehicle {
                 + "\n Engine Size: " + this.engineSize
                 + "\n No Of Door: " + this.doorNR
                 + "\n Price: " + this.price
-                + "\n Description: " + this.description);
+                + "\n Description: " + this.description
+                + "\n Date introduced into market: "+ this.dateInMarket
+                + "\n Date it was sold: " + this.soldDate);
     }
 }
 

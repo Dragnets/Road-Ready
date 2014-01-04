@@ -23,7 +23,11 @@ public class Controller {
         sportCars = newCatalogue.getCatalogue();
         ArrayList<Vehicle>mylist = sportCars.getAllProducts();
         int num = 1;
-         for (Vehicle obj:sportCars){
+         for (Vehicle obj:mylist){
+             System.out.println("\nVehicle "+num);
+             System.out.println(obj);
+             num++;
+             
              //DISPLAY LIST FROM CSV LOOK UP ROAD DEMO....
          }
         
@@ -39,5 +43,4 @@ public class Controller {
             System.out.println(e);
         }   
         }
-    
 }

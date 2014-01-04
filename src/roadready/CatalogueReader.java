@@ -57,6 +57,5 @@ public class CatalogueReader {
    
        public Catalogue getCatalogue(){
            return this.catalogue;
-       
     }
 }
