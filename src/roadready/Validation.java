@@ -32,7 +32,7 @@ public class Validation {
     
     public static Boolean body(String type){
         String[] valid = {"Hatchback", "Saloon", "Estate", "Convertible", "MPV",
-            "Couple", "Quatro", "Unlisted"};
+            "Couple", "Quatro", "Veyron", "Unlisted"};
         for (String word:valid){
             if(word.equals(type)){
                 return true;

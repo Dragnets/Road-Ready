@@ -21,7 +21,7 @@ public class Controller {
         try {
             CatalogueReader newCatalogue = new CatalogueReader(fileName.next()); // Next() Convert to string
             sportCars = newCatalogue.getCatalogue();
-            ArrayList<Vehicle> mylist = sportCars.getAllProducts();
+            ArrayList<Vehicle> mylist = sportCars.getAllProducts(); /// Sort Out toString print out Here might be the problem ..... WORK HERE
             int num = 1;
             for (Vehicle obj : mylist) {
                 System.out.println("\nVehicle " + num);
