@@ -43,7 +43,7 @@ public class SuperSport extends Vehicle implements Car {
     @Override
     public String toString(){
         return ( super.toString()+ "\n Max speed: "+this.maxSpeed
-                +"\n******* SPECIAL OFFER "+this.discount+" POUNDS OFF was "+this.initialPrice+" POUNDS *******");
+                +"\n******* SPECIAL OFFER "+'\u00A3'+this.discount+" POUNDS OFF was "+'\u00A3'+this.initialPrice+" POUNDS *******");
 
     }
 }

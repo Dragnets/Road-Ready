@@ -71,36 +71,32 @@ public class CatalogueReader {
            String price        = fields[12+a].trim();
            String description  = fields[13+a].trim();
            
-           //System.out.println(carType);
+           
            if (a==1){ // Only perfome if different type of cars in file
                carType = fields[1].toLowerCase().trim();
-               if (carType.equals("sport")) {
-                    Boolean modification = Boolean.valueOf(fields[15].trim());
-                   String detailsOfModification = fields[16].trim();
-                   this.car = new SportsVehicle(vehicleID, condition, make, model, bodyType,
-                           colour, fuel, manufactured, transmission, millage, engineSize,
-                           doorNR, price, description, modification,
-                           detailsOfModification);
-               }
-               else if (carType.equals("supercar")) {
-                   String maxSpeed = fields[15].trim();
-                   this.car = new SuperSport(vehicleID, condition, make, model, bodyType,
-                           colour, fuel, manufactured, transmission, millage, engineSize,
-                           doorNR, price, description, maxSpeed);
-               } else {
-                   System.out.println("BINGO");
-                   this.car = new Vehicle(vehicleID, condition, make, model, bodyType,
-                           colour, fuel, manufactured, transmission, millage, engineSize,
-                           doorNR, price, description);  
-               }
-               this.catalogue.addVehicle(car);
            }
-           else{
-               Vehicle vehicle = new Vehicle(vehicleID, condition, make, model, bodyType,
-                           colour, fuel, manufactured, transmission, millage, engineSize,
-                           doorNR, price, description);
-               this.catalogue.addVehicle(vehicle);
-           }
+              switch (carType) {
+                  case "sport":
+                      Boolean modification = Boolean.valueOf(fields[15].trim());
+                      String detailsOfModification = fields[16].trim();
+                      this.car = new SportsVehicle(vehicleID, condition, make, model, bodyType,
+                              colour, fuel, manufactured, transmission, millage, engineSize,
+                              doorNR, price, description, modification,
+                              detailsOfModification);
+                      break;
+                  case "supercar":
+                      String maxSpeed = fields[15].trim();
+                      this.car = new SuperSport(vehicleID, condition, make, model, bodyType,
+                              colour, fuel, manufactured, transmission, millage, engineSize,
+                              doorNR, price, description, maxSpeed);
+                      break;
+                  default:
+                      this.car = new Vehicle(vehicleID, condition, make, model, bodyType,
+                              colour, fuel, manufactured, transmission, millage, engineSize,
+                              doorNR, price, description);
+                      break;
+              }
+               this.catalogue.addVehicle(car);      
        } // While loop close
    }
    
@@ -112,3 +108,12 @@ public class CatalogueReader {
        return this.catalogue;
     }
 }
+
+
+           //else{
+           //    System.out.println("URAA");
+           //    Vehicle vehicle = new Vehicle(vehicleID, condition, make, model, bodyType,
+           //                colour, fuel, manufactured, transmission, millage, engineSize,
+           //                doorNR, price, description);
+           //    this.catalogue.addVehicle(vehicle);
+          // }
