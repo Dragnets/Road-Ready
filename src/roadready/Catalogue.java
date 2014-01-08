@@ -30,7 +30,7 @@ public class Catalogue {
      * Add a vehicle and update total vehicle
      * @param newCar the instance Car passed in
      */
-    public void addVehicle( Car newCar){
+    public void addVehicle( Car newCar){ //Stage 2 Q4
         this.vehicle.add(newCar);
         this.totalVehicle ++;
     }
@@ -39,8 +39,23 @@ public class Catalogue {
      * Get the cars presented so far
      * @return cars as a ArrayList
      */
-    public ArrayList getAllProducts(){
+    public ArrayList getAllProducts(){ //Stage2 Q4
         return this.vehicle;
+    }
+    public void soldVehicle(String vehicleID) throws ProductException{
+        Car myvehicle = this.findVehicle(vehicleID);
+        myvehicle.vehicleSold();
+    }
+    
+    public ArrayList getProductInStock(){
+        ArrayList<Car> newList = new ArrayList<>();
+        for (Car obj:vehicle){
+            if (obj.getVehicleSoldDate().equals("Still In stock")){
+                newList.add(obj);
+            }
+            
+        }
+        return newList;
     }
     /**
      * Find the vehicle by id
@@ -72,7 +87,6 @@ public class Catalogue {
         randomGenerator = new Random();
         int target = randomGenerator.nextInt(this.totalVehicle);
         this.managerChoice = vehicle.get(target);
-        System.out.println("My Target: "+target);
         
         return managerChoice;    
         }

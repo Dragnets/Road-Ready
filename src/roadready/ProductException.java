@@ -1,12 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package roadready;
 
 /**
  *
  * @author Raitis Kupce
+ * Throws exception if product data is invalid
  */
 public class ProductException extends Exception {
     

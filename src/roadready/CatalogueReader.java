@@ -7,30 +7,29 @@ import java.util.Scanner;
 /**
  *
  * @author Raitis Kupce
+ * Reads two types of csv file thats contains Car data, 
+ * e.g csv with headers and without and returns catalogue
  */
 public class CatalogueReader {
-   
+   /** The stored value of the csv file name */
     private Scanner csvFile; 
 
+    /** The Catalogue where Car are stored */
     private Catalogue catalogue = new Catalogue();
     
-    //Catalogue sc = new Catalogue();
-    
-    Car car;
+   /** The stored object of the Car */    
+    private Car car;
     
     /**
-     * Reads  Two type of csv file, Only Vehicle class and mixs
-     * @param fileName
-     * @throws FileNotFoundException
-     * @throws ProductException 
+     * The Constructor
+     * Reads the csv file and creates the Car object by it type.
+     * @param fileName the csv file name
+     * @throws FileNotFoundException 
+     * @throws ProductException not valid product
      */
-   public CatalogueReader(String fileName) throws FileNotFoundException, ProductException{
-       
-      // try {
+   public CatalogueReader(String fileName) throws FileNotFoundException,
+           ProductException{
        this.csvFile = new Scanner(new File(fileName));
-       //} catch (FileNotFoundException e){
-          // System.out.println("Not a valid file name, try again");
-       
        csvFile.useDelimiter("\n");
        String dataRow = new String();
        boolean first = true;
@@ -56,7 +55,6 @@ public class CatalogueReader {
               }   
            }
            String vehicleID    = fields[0].trim();
-           //System.out.println(vehicleID);
            String condition    = fields[1+a].trim();
            String make         = fields[2+a].trim();
            String model        = fields[3+a].trim();
@@ -72,28 +70,29 @@ public class CatalogueReader {
            String description  = fields[13+a].trim();
            
            
-           if (a==1){ // Only perfome if different type of cars in file
+           if (a==1){ // Only perfome if first line isn't header in csv
                carType = fields[1].toLowerCase().trim();
            }
               switch (carType) {
                   case "sport":
                       Boolean modification = Boolean.valueOf(fields[15].trim());
                       String detailsOfModification = fields[16].trim();
-                      this.car = new SportsVehicle(vehicleID, condition, make, model, bodyType,
-                              colour, fuel, manufactured, transmission, millage, engineSize,
-                              doorNR, price, description, modification,
-                              detailsOfModification);
+                      this.car = new SportsVehicle(vehicleID, condition, make,
+                              model, bodyType,  colour, fuel, manufactured, 
+                              transmission, millage, engineSize, doorNR, price, 
+                              description, modification,detailsOfModification);
                       break;
                   case "supercar":
                       String maxSpeed = fields[15].trim();
-                      this.car = new SuperSport(vehicleID, condition, make, model, bodyType,
-                              colour, fuel, manufactured, transmission, millage, engineSize,
-                              doorNR, price, description, maxSpeed);
+                      this.car = new SuperSport(vehicleID, condition, make, 
+                              model, bodyType,colour, fuel, manufactured, 
+                              transmission, millage, engineSize,doorNR, price, 
+                              description, maxSpeed);
                       break;
                   default:
-                      this.car = new Vehicle(vehicleID, condition, make, model, bodyType,
-                              colour, fuel, manufactured, transmission, millage, engineSize,
-                              doorNR, price, description);
+                      this.car = new Vehicle(vehicleID, condition, make, model, 
+                              bodyType,colour, fuel, manufactured, transmission,
+                              millage, engineSize,doorNR, price, description);
                       break;
               }
                this.catalogue.addVehicle(car);      

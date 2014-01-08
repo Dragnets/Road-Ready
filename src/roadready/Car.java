@@ -1,23 +1,18 @@
 package roadready;
 
 /**
- *
  * @author Raitis Kupce
  * Provides a contract for
- * concrete classes such as Rectangle, Circle, Square
+ * concrete classes such as SuperSport and SportVehicle
  */
 public interface Car {
-    /**
-     * @return String giving type of car e.g. Vehicle, SuperSport, SportsVehicle
-     */
+
     public String getTypeOfCar();
     
-    //public String getPrice();
+    public String vehicleSold();
     
     public String getVehicleID();
-  
-   // public String getVehicleDateInStock();
-    
-    //public String getVehicleSoldDate();
+     
+    public String getVehicleSoldDate();
       
 }

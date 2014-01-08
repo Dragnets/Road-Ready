@@ -10,7 +10,7 @@ package roadready;
  */
 public class Validation {
     
-    public static Boolean validCode(String currentID){
+    public static Boolean validCode(String currentID){ //Stage 1 Q2
         Boolean status;
         if (currentID.matches("[A-Z][A-Z][A-Z][A-Z][0-9][0-9][0-9]")){ //Only English Character allowed
             status = true;

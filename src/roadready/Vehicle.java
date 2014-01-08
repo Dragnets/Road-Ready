@@ -14,7 +14,7 @@ import java.util.TimeZone;
 
 public class Vehicle implements Car{
     /** Current vehicle ID */
-    String vehicleID; //Set the lenght of string !!!!!!
+    String vehicleID; 
     /** Current Vehicle condition */
     String condition;
     /** Current vehicle make */
@@ -53,26 +53,26 @@ public class Vehicle implements Car{
      * Sets up initial values for ID, condition,make,model,bodyType,colour,fuel,
      * manufacture,transmission,millage,engineSize,doorNR,price,description,
      * check if given value is valid and sets up initial value for date in market.
-     * @param ID
-     * @param condition
-     * @param make
-     * @param model
-     * @param bodyType
-     * @param colour
-     * @param fuel
-     * @param manufactured
-     * @param transmission
-     * @param millage
-     * @param engineSize
-     * @param doorNR
-     * @param price
-     * @param description
+     * @param ID the ID that the Vehicle will be initialised with
+     * @param condition the condition that the Vehicle will be initialised with
+     * @param make  the make that the Vehicle will be initialised with
+     * @param model the model that the Vehicle will be initialised with
+     * @param bodyType the bodyType that the Vehicle will be initialised with
+     * @param colour the colour that the Vehicle will be initialised with
+     * @param fuel the fuel that the Vehicle will be initialised with
+     * @param manufactured the manufactured that the Vehicle will be initialised with
+     * @param transmission the transmission that the Vehicle will be initialised with
+     * @param millage the millage that the Vehicle will be initialised with
+     * @param engineSize the engineSize that the Vehicle will be initialised with
+     * @param doorNR the doorNR that the Vehicle will be initialised with
+     * @param price the price that the Vehicle will be initialised with
+     * @param description the description that the Vehicle will be initialised with
      * @throws ProductException if product is not valid
      */
-    public Vehicle(String ID, String condition, String make, String model, String bodyType,
-            String colour, String fuel, int manufactured, String transmission,
-            int millage,String engineSize, int doorNR, String price,
-            String description) throws ProductException {
+    public Vehicle(String ID, String condition, String make, String model,
+            String bodyType, String colour, String fuel, int manufactured,
+            String transmission, int millage, String engineSize, int doorNR,
+            String price, String description) throws ProductException {
 
         if (!Validation.validCode(ID)) {
             throw new ProductException("Invalid ID");
@@ -88,7 +88,7 @@ public class Vehicle implements Car{
             throw new ProductException("Invalid Fuel Type");
         }
         if(!Validation.transmission(transmission)){
-            throw new ProductException("Invalid transmision");
+            throw new ProductException("Invalid transmission");
         }
         this.vehicleID = ID;
         this.condition = condition;
@@ -160,14 +160,17 @@ public class Vehicle implements Car{
     /**
      * Sets a new date when vehicle was sold
      */
-    public void vehicleSold(){
-        soldDate = gregorianCalendar();
+    
+    @Override
+     public String vehicleSold(){ //Stage 3 Q1 End-of-Line 
+        return soldDate = gregorianCalendar();
     }
     
     /**
      * Gets the date vehicle was sold
      * @return 
      */
+    @Override
     public String getVehicleSoldDate(){
         return soldDate;
     }
@@ -183,8 +186,9 @@ public class Vehicle implements Car{
     
     /**
      * Generates a string showing the data for the vehicle
-     * @return date about the vehicle
+     * @return data about the vehicle
      */
+    
     @Override
     public String toString() {
         return ("Vehicle ID: " + this.vehicleID
