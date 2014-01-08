@@ -9,18 +9,18 @@ import java.util.Random;
  */
 public class Catalogue {
     
-    private Vehicle managerChoice;
+    private Car managerChoice;
         
     private Random randomGenerator;
     
-    private ArrayList<Vehicle> vehicle= new ArrayList<>();
+    private ArrayList<Car> vehicle= new ArrayList<>();
     
     private int totalVehicle;
     public Catalogue() {
                               
     }
     
-    public void addVehicle( Vehicle newCar){
+    public void addVehicle( Car newCar){
         this.vehicle.add(newCar);
         this.totalVehicle ++;
     }
@@ -28,9 +28,9 @@ public class Catalogue {
     public ArrayList getAllProducts(){
         return this.vehicle;
     }
-    public Vehicle findVehicle(String id) throws ProductException{
-        Vehicle matchID = null;
-        for(Vehicle a:vehicle){
+    public Car findVehicle(String id) throws ProductException{
+        Car matchID = null;
+        for(Car a:vehicle){
             String currentID = a.getVehicleID();
             if(currentID.equals(id)){
                 matchID = a;
@@ -43,7 +43,7 @@ public class Catalogue {
     return matchID;
     }
     
-    public Vehicle starProduct(){
+    public Car starProduct(){
         
         randomGenerator = new Random();
         int target = randomGenerator.nextInt(this.totalVehicle);

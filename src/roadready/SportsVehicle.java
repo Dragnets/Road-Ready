@@ -4,7 +4,7 @@ package roadready;
  *
  * @author Raitis
  */
-public class SportsVehicle extends Vehicle{
+public class SportsVehicle extends Vehicle implements Car{
         
         private Boolean modification;
         private String detailsOfModification = "N/A";
@@ -21,8 +21,17 @@ public class SportsVehicle extends Vehicle{
        this.modification = modification;
        this.detailsOfModification = detailsOfModification;
     }
+    /**
+     * Gets the type of car
+     * @return the String "SportsVehicle" 
+     */
+    public String getTypeOfCar(){
+        return "SportsVehicle";
+    }
     
+    @Override
     public String toString(){
-        return ( super.toString()+ this.modification+this.detailsOfModification);
+        return ( super.toString()+"\n Modifided: "+ this.modification
+                +"\n Details of Modification: "+this.detailsOfModification);
     }
 }

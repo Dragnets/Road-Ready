@@ -21,9 +21,10 @@ public class Controller {
         try {
             CatalogueReader newCatalogue = new CatalogueReader(fileName.next()); // Next() Convert to string
             sportCars = newCatalogue.getCatalogue();
-            ArrayList<Vehicle> mylist = sportCars.getAllProducts(); /// Sort Out toString print out Here might be the problem ..... WORK HERE
+            ArrayList<Car> mylist = sportCars.getAllProducts();
+            //System.out.println(mylist);
             int num = 1;
-            for (Vehicle obj : mylist) {
+            for (Car obj : mylist) {
                 System.out.println("\nVehicle " + num);
                 System.out.println(obj);
                 num++;
@@ -43,13 +44,12 @@ public class Controller {
             String vehicleID = keyword.next();
             if (!vehicleID.equals(escapeWord)) {
                 try {
-                    Vehicle mycar = sportCars.findVehicle(vehicleID);
+                    Car mycar = sportCars.findVehicle(vehicleID); /// HMmmm car???? interface
                     System.out.println(mycar);
                 } catch (ProductException e) {
                     System.out.println(e);
                 }
             }
-
             if (vehicleID.equals(escapeWord)) {
                 exit = false; 
                

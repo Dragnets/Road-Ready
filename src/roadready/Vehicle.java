@@ -13,7 +13,7 @@ import java.util.TimeZone;
  *
  * @author Raitis Kupce
  */
-public class Vehicle {
+public class Vehicle implements Car{
 
     String vehicleID; //Set the lenght of string !!!!!!
     String condition;
@@ -32,8 +32,8 @@ public class Vehicle {
     String description;
     Calendar calendar;
     String dateInMarket;
-    String soldDate = "In stock";
-    // Photo ????????????
+    String soldDate = "Still In stock";
+    
 
     public Vehicle(String ID, String condition, String make, String model, String bodyType,
             String colour, String fuel, int manufactured, String transmission,
@@ -111,7 +111,15 @@ public class Vehicle {
     public String getVehicleSoldDate(){
         return soldDate;
     }
-    
+
+    /**
+     * Gets the type of car
+     * @return the String "Vehicle"
+     */
+    @Override
+    public String getTypeOfCar(){
+        return "Vehicle";
+    }
     @Override
     public String toString() {
         return ("Vehicle ID: " + this.vehicleID
