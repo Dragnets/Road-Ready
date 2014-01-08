@@ -10,7 +10,9 @@ public interface Car {
     /**
      * @return String giving type of car e.g. Vehicle, SuperSport, SportsVehicle
      */
-    public String getTypeOfCar(); 
+    public String getTypeOfCar();
+    
+    //public String getPrice();
     
     public String getVehicleID();
   

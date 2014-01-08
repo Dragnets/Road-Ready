@@ -79,6 +79,9 @@ public class Vehicle implements Car{
     public String getVehicleID(){
         return this.vehicleID;
     }
+    public String getPrice(){
+        return this.price; 
+    }
     
     // Set up current date
     public String gregorianCalendar(){
@@ -134,7 +137,7 @@ public class Vehicle implements Car{
                 + "\n Millage: " + this.millage
                 + "\n Engine Size: " + this.engineSize
                 + "\n No Of Door: " + this.doorNR
-                + "\n Price: " + this.price
+                + "\n Price: " + this.getPrice()
                 + "\n Description: " + this.description
                 + "\n Date introduced into market: "+ this.dateInMarket
                 + "\n Date it was sold: " + this.soldDate);

@@ -7,6 +7,8 @@ package roadready;
 
 public class SuperSport extends Vehicle implements Car {
     
+    private String initialPrice;
+    private int discount = 500;
     private String maxSpeed;
 
     public SuperSport(String ID, String condition, String make, String model,
@@ -17,7 +19,14 @@ public class SuperSport extends Vehicle implements Car {
         super(ID, condition, make, model, bodyType, colour, fuel, manufactured,
                 transmission, millage, engineSize, doorNR, price, description);
         this.maxSpeed = maxSpeed;
-
+        initialPrice=price;
+        this.price = discounted();
+    }
+    
+    private String discounted(){
+        //float discount =   (15 * 100.0f) / Integer.parseInt(this.price);
+        float newPrice = Integer.parseInt(this.price)-discount;
+        return String.valueOf(newPrice);
     }
     
     /**
@@ -33,7 +42,8 @@ public class SuperSport extends Vehicle implements Car {
     }
     @Override
     public String toString(){
-        return ( super.toString()+ "\n Max speed: "+this.maxSpeed);
+        return ( super.toString()+ "\n Max speed: "+this.maxSpeed
+                +"\n******* SPECIAL OFFER "+this.discount+" POUNDS OFF was "+this.initialPrice+" POUNDS *******");
 
     }
 }
